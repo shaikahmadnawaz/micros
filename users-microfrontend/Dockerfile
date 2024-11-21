@@ -23,9 +23,10 @@ RUN npm run build
 # Stage 2: Serve using Vite preview
 FROM node:22.11.0-bullseye-slim
 
-# Install dumb-init and clean up
+# Install dumb-init and Vite globally
 RUN apt-get update && apt-get install -y --no-install-recommends dumb-init && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    npm install -g vite
 
 # Set working directory
 WORKDIR /usr/src/app
@@ -42,5 +43,4 @@ EXPOSE 4174
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
 # Command to run the preview server
-CMD ["vite", "preview", "--host", "0.0.0.0"]
-
+CMD ["npm", "run", "preview", "--", "--host", "0.0.0.0"]
