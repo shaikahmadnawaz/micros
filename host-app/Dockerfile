@@ -42,4 +42,5 @@ EXPOSE 4173
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
 # Command to run the preview server
-CMD ["npm", "run", "preview"]
+CMD ["vite", "preview", "--host", "0.0.0.0"]
+
