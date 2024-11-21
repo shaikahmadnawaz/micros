@@ -43,3 +43,4 @@ ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
 # Command to run the preview server
 CMD ["vite", "preview", "--host", "0.0.0.0"]
+
