@@ -5,9 +5,6 @@ FROM node:22.11.0-bullseye-slim AS builder
 RUN apt-get update && apt-get install -y --no-install-recommends dumb-init && \
     rm -rf /var/lib/apt/lists/*
 
-# Set environment variables
-ENV NODE_ENV=production
-
 # Set working directory
 WORKDIR /usr/src/app
 

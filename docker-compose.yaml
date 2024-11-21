@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+  # Host Application
+  host-app:
+    build:
+      context: ./host-app
+      dockerfile: Dockerfile
+    ports:
+      - "4173:4173"
+
+  # Users Microfrontend
+  users-microfrontend:
+    build:
+      context: ./users-microfrontend
+      dockerfile: Dockerfile
+    ports:
+      - "4174:4174"
+
+    depends_on:
+      - users-service
+
+  # Users Service
+  users-service:
+    build:
+      context: ./users-service
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+
+  # Products Microfrontend
+  products-microfrontend:
+    build:
+      context: ./products-microfrontend
+      dockerfile: Dockerfile
+    ports:
+      - "4175:4175"
+
+    depends_on:
+      - products-service
+
+  # Products Service
+  products-service:
+    build:
+      context: ./products-service
+      dockerfile: Dockerfile
+    ports:
+      - "5002:5002"
